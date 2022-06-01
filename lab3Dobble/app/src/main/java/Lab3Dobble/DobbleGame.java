@@ -5,10 +5,12 @@
 package Lab3Dobble;
 import Lab3Dobble.Player;
 import Lab3Dobble.Dobble;
+import java.util.List;
 /**
  *
  * @author jdall
  */
 public class DobbleGame {
-    
+    List<Player> player;
+    List<Card> cardSet;
 }

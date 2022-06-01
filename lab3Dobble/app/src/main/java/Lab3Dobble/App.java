@@ -11,14 +11,43 @@ public class App {
                "1. Crear un juego\n" +
                "2. Registrar jugador\n" +
                "3. Jugar\n" +
-               "4. Visualizar estado completo del juego";
+               "4. Visualizar estado completo del juego" +
+               "5. Salir\n";
     }
 
     public static void main(String[] args){
-        System.out.println(new App().menu());
-        Scanner opcion = new Scanner(System.in);
-        int eleccion = opcion.nextInt();
-        System.out.println("La opcion fue: " + eleccion);
+                List<String> elementos = new ArrayList<String>();
+        System.out.println("Cual es la cantidad de elementos que desea ingresar: ");
+        Scanner numero_elementos = new Scanner(System.in);
+        int numElementos = numero_elementos.nextInt();
+        for(int i = 0; i < numElementos; i++){
+            System.out.println("Ingrese el elemente "+ (i+1) +':');
+            Scanner elemento = new Scanner(System.in);
+            String element = elemento.nextLine();
+            elementos.add(element);
+        }
+        /*
+        for(int i = 0; i < numElementos; i++){
+            System.out.println("El elemento " + (i+1) + "es : " + elementos.get(i));
+        }
+        */
+        System.out.println("Ingrese la cantidad de elementos por carta");
+        Scanner num = new Scanner(System.in);
+        int numElemento = num.nextInt();
+        System.out.println("Ingrese la cantidad de elementos por carta"
+                + "(ingrese un numero menor a 0 si quiere el maximo de "
+                + "cartas que se pueden crear)");
+        int cantCartas = num.nextInt();
+        Dobble dobble = new Dobble(numElemento, cantCartas, elementos);
+        System.out.println("La cantidad de elementos es " + elementos.size());
+        Player player1 = new Player("Pedro",1);
+        //System.out.println(player1.getId());
+        Card carta1 = new Card(1, elementos);
+        String strCard = carta1.toString();
+        System.out.println(strCard);
+        //Scanner opcion = new Scanner(System.in);
+        //int eleccion = opcion.nextInt();
+        //System.out.println(new App().menu());
+        //System.out.println("La opcion fue: " + eleccion);
     }
-    
 }

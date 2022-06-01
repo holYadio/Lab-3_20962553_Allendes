@@ -21,16 +21,38 @@ public class Player {
         this.mazoPlayer = new ArrayList<>();
     }
     
+    
+    // GETTERS //
+    
     /**
-     * Getters
+     * obtiene el nombre del jugador
+     * @return nombre del Jugador
      */
     public String getNombre() {
         return nombre;
     }
+    
+    
+    /**
+     * Obtiene la id del jugador
+     * @return id del jugador
+     */
     public int getId(){
         return id;
     }
+    
+    
+    /**
+     * Obtiene el mazo del jugador
+     * @return Mazo de cartas del jugador
+     */
     public List<Card> getMazoPlayer() {
         return mazoPlayer;
+    }
+    
+    @Override
+    public String toString() {
+    return "Player ={" + "nombre = " + nombre + ", ID = " + id + ", Mazo ="
+            + mazoPlayer + '}';
     }
 }
