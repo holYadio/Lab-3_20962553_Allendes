@@ -49,11 +49,11 @@ public class Card {
      */
     @Override
     public String toString() {
-        String texto = "Carta ={" + "Id = " + id + ", Elementos = [";
+        String texto = "Carta " + id + " : ";
         for(int i = 0; i < (card.size() - 1); i++){
            texto += card.get(i) + ", ";
         }
-        texto += card.get((card.size()-1)) + ']' + '}';
+        texto += card.get((card.size()-1)) + '.';
         return texto;
     }
 }

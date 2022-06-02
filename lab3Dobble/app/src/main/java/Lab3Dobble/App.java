@@ -16,38 +16,82 @@ public class App {
     }
 
     public static void main(String[] args){
-                List<String> elementos = new ArrayList<String>();
-        System.out.println("Cual es la cantidad de elementos que desea ingresar: ");
-        Scanner numero_elementos = new Scanner(System.in);
-        int numElementos = numero_elementos.nextInt();
-        for(int i = 0; i < numElementos; i++){
-            System.out.println("Ingrese el elemente "+ (i+1) +':');
-            Scanner elemento = new Scanner(System.in);
-            String element = elemento.nextLine();
-            elementos.add(element);
+        Scanner entrada = new Scanner(System.in);
+        boolean continuacion = true;
+        int numElementos;
+        List<String> elementos = new ArrayList<>();
+        while(continuacion){
+            System.out.println("Ingrese una opcion:\n "
+                + "1. Ingresar una lista de elementos\n "
+                + "2. Ocupar una lista de numeros (ingresar el maximo num)\n "
+                + "3. Ocupar lista de letras con 13 elementos (Maximo 4 elementos por carta)");
+            //int numOpcion = entrada.nextInt();
+            int numOpcion = 3;
+            if (numOpcion == 1){
+                System.out.println("Cual es la cantidad de elementos que desea ingresar: ");
+                numElementos = entrada.nextInt();
+                for(int i = 0; i < numElementos; i++){
+                    System.out.println("Ingrese el elemente "+ (i+1) +':');
+                    Scanner elemento = new Scanner(System.in);
+                    String element = elemento.nextLine();
+                    elementos.add(element);
+                }
+                continuacion = false;
+            } else if(numOpcion == 2){
+                System.out.println("Ingresar el maximo de la lista: ");
+                numElementos = entrada.nextInt();
+                for(int i = 1; i <= numElementos; i++){
+                    String strI = i + "";
+                    elementos.add(strI);
+                }
+                
+                continuacion = false;    
+            } else if(numOpcion == 3){
+                numElementos = 13;
+                elementos.add("a");
+                elementos.add("b");
+                elementos.add("c");
+                elementos.add("d");
+                elementos.add("e");
+                elementos.add("f");
+                elementos.add("g");
+                elementos.add("h");
+                elementos.add("i");
+                elementos.add("j");
+                elementos.add("k");
+                elementos.add("l");
+                elementos.add("m");
+                continuacion = false; 
+            } else{
+                System.out.println("Ingrese una opcion valida");
+            }
         }
+        
+        
         /*
         for(int i = 0; i < numElementos; i++){
             System.out.println("El elemento " + (i+1) + "es : " + elementos.get(i));
         }
         */
         System.out.println("Ingrese la cantidad de elementos por carta");
-        Scanner num = new Scanner(System.in);
-        int numElemento = num.nextInt();
-        System.out.println("Ingrese la cantidad de elementos por carta"
+        
+        int numElemento = entrada.nextInt();
+        System.out.println("Ingrese la cantidad de cartas del mazo"
                 + "(ingrese un numero menor a 0 si quiere el maximo de "
                 + "cartas que se pueden crear)");
-        int cantCartas = num.nextInt();
+        int cantCartas = entrada.nextInt();
         Dobble dobble = new Dobble(numElemento, cantCartas, elementos);
+        Card carta1 = dobble.nthsCard(0);
+        System.out.println(carta1.toString());
         System.out.println("La cantidad de elementos es " + elementos.size());
+        /*
         Player player1 = new Player("Pedro",1);
-        //System.out.println(player1.getId());
+        System.out.println(player1.getId());
         Card carta1 = new Card(1, elementos);
-        String strCard = carta1.toString();
-        System.out.println(strCard);
-        //Scanner opcion = new Scanner(System.in);
-        //int eleccion = opcion.nextInt();
-        //System.out.println(new App().menu());
-        //System.out.println("La opcion fue: " + eleccion);
+        Scanner opcion = new Scanner(System.in);
+        int eleccion = opcion.nextInt();
+        System.out.println(new App().menu());
+        System.out.println("La opcion fue: " + eleccion);
+        */
     }
 }
