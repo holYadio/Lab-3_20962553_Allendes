@@ -14,7 +14,7 @@ import java.util.List;
  */
 
 public class Dobble {
-    private ArrayList<Card> cardsSet;
+    private List<Card> cardsSet;
     private List<String> listaElementos;
     
     /**
@@ -27,74 +27,80 @@ public class Dobble {
     public Dobble (int numElementos, int cantCartas, List<String> elementos){
         ArrayList<Card> cartas = new ArrayList<>();
         List<String> elementosCarta = new ArrayList<>();
+        int id = 1;
         
         for(int i = 0; i < numElementos;i++){
             String element= elementos.get(i);
             elementosCarta.add(element);
         }
-        Card firstCard = new Card(1,elementosCarta);
+        Card firstCard = new Card(id,elementosCarta);
         cartas.add(firstCard);
-        elementosCarta.clear();
-        System.out.println("La id es "+ firstCard.getId());
-        System.out.println(firstCard.getCard());
+        id ++;
         for (int j = 1; j <= (numElementos - 1); j++) {
-            elementosCarta.clear();
+            elementosCarta = new ArrayList<>();
             elementosCarta.add(elementos.get(0));
             for (int k = 1; k <= (numElementos - 1); k++) {
                 elementosCarta.add(elementos.get(((numElementos - 1)* j + (k+1))-1));
             }
-            Card carta = new Card(cartas.size(),elementosCarta);
+            Card carta;
+            carta = new Card(id,elementosCarta);
             cartas.add(carta);
-            
+            id ++;
         }
         
         for (int i= 1; i<=(numElementos - 1); i++) {
             for (int j = 1; j <= (numElementos - 1); j++){
-                elementosCarta.clear();
+                elementosCarta = new ArrayList<>();
                 elementosCarta.add(elementos.get(i+1));
                 for (int k = 1; k <= (numElementos - 1); k++){
                     elementosCarta.add(elementos.get(((numElementos - 1)+2+(k-1)*
                             (numElementos - 1)+(((i-1)*(k-1)+j-1)%
                                     (numElementos - 1)))- 1));
                 }
-                Card carta = new Card(cartas.size(),elementosCarta);
+                Card carta;
+                carta = new Card(id,elementosCarta);
                 cartas.add(carta);
+                id ++;
             }
         }
-        /*
+        
         for(int i = cartas.size()-1;i>0;i--){
             int randomInt = (int)Math.floor(Math.random() * (i + 1));
             Card carta = cartas.get(i);
             cartas.set(i,cartas.get(randomInt));
             cartas.set(randomInt,carta);
-        }*/
+        }
         
         if(cantCartas < ((numElementos-1)+((numElementos-1)*(numElementos-1))+1)
                 && cantCartas > 0){
             ArrayList<Card> cards = new ArrayList<>();
+             
             for(int i = 0; i < cantCartas;i++){
-                cards.add(cartas.get(i));
+                Card card = cartas.get(i);
+                card.setId(i+1);
+                cards.add(card);
             }
             cartas = cards;
         }
-        System.out.println("La cantidad de cartas es "+ cartas.size());
-        
         this.cardsSet = cartas;
         this.listaElementos = elementos;        
     }
     
-    public Card nthsCard(int n){
+    public Card nthCard(int n){
         return cardsSet.get(n);
     }
-    /*
+    
+    public int FindTotalCards(Card cartaMuestra){
+        int i = cartaMuestra.size();
+        return (((i-1)*(i-1)+ (i-1) + 1));
+    }
+    
     @Override
     public String toString() {
-        String texto = "El cardsSet tiene las cartas" + " : ";
-        for(int i = 0; i < (cardsSet.size() - 1); i++){
-           texto += cardsSet.get(i).toString() + ", ";
+        String texto = "El cardsSet tiene las cartas" + " :\n";
+        for(int i = 0; i < (cardsSet.size()); i++){
+           texto += cardsSet.get(i).toString() + "\n";
         }
-        texto += cardsSet.get((cardsSet.size()-1)).toString() + '.';
         return texto;
     }
-    */
 }

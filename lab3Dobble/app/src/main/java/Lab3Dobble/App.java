@@ -81,9 +81,8 @@ public class App {
                 + "cartas que se pueden crear)");
         int cantCartas = entrada.nextInt();
         Dobble dobble = new Dobble(numElemento, cantCartas, elementos);
-        Card carta1 = dobble.nthsCard(0);
-        System.out.println(carta1.toString());
-        System.out.println("La cantidad de elementos es " + elementos.size());
+        Card carta1 = dobble.nthCard(0);
+        System.out.println(dobble.FindTotalCards(carta1));
         /*
         Player player1 = new Player("Pedro",1);
         System.out.println(player1.getId());

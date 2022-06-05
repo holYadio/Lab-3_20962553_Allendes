@@ -20,11 +20,11 @@ public class Card {
     /**
      * Constructor de la carta
      * @param id
-     * @param elementos 
+     * @param listElementos 
      */
-    public Card(int id, List<String> elementos){
+    public Card(int id, List<String> listElementos){
         this.id = id;
-        this.card = elementos;
+        this.card = listElementos;
     }
 
     /**
@@ -43,10 +43,23 @@ public class Card {
         return card;
     }
     
+    public void setCard(List<String> card) {
+        this.card = card;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+    
     /**
      * 
      * @return 
      */
+    
+    public int size(){
+        return card.size();
+    }
+    
     @Override
     public String toString() {
         String texto = "Carta " + id + " : ";
@@ -56,4 +69,5 @@ public class Card {
         texto += card.get((card.size()-1)) + '.';
         return texto;
     }
+    
 }
