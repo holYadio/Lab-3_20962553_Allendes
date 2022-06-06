@@ -3,8 +3,8 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 package Lab3Dobble;
-import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 /**
  * 
  * @author jdall
@@ -59,6 +59,21 @@ public class Card {
     public int size(){
         return card.size();
     }
+    
+    /**
+     *
+     * @param o
+     * @return
+     */
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Card card1 = (Card) o;
+        return getCard().equals(card1.getCard());
+    }
+    
     
     @Override
     public String toString() {
