@@ -62,10 +62,23 @@ public class Card {
     
     /**
      *
-     * @param o
+     * @param cardComp
      * @return
      */
-
+    public boolean verificarCarta(List<String> cardComp){
+        int x = 0;
+        for(int i = 0; i < card.size();i++){
+            for(int j = 0; i < cardComp.size();i++)
+                if(card.get(i).equals(cardComp.get(j))){
+                    x++;
+                } 
+        }
+        if(x < cardComp.size()){
+            return false;
+        }
+        return true;
+    }
+    
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;

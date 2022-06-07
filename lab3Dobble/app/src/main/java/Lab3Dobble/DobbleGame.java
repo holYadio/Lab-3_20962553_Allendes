@@ -15,18 +15,15 @@ import java.util.Scanner;
  * @author jdall
  */
 public class DobbleGame {
-    List<Player> players;
-    Dobble dobble;
-    String mode;
-    int turnoPlayer;
-    List<Card> CardsMesa;
+    private int cantPlayers;
+    private List<Player> players;
+    private Dobble dobble;
+    private String mode;
+    private int turnoPlayer;
+    private List<Card> CardsMesa;
     public DobbleGame(int cantJugadores, int cantCartas, String modo) {
         Scanner entrada = new Scanner(System.in);
         List<Player> jugadores = new ArrayList<>();
-        for (int i = 0; i < cantJugadores; i++) {
-            Player player = new Player(" ", i + 1);
-            jugadores.add(player);
-        }
         List<String> elementos = new ArrayList<>();
         elementos.add("a");
         elementos.add("b");
@@ -91,13 +88,15 @@ public class DobbleGame {
         }*/
         System.out.println("Ingrese la cantidad de elementos por carta");
         int numElementos = entrada.nextInt();
+        this.cantPlayers = cantJugadores;
         this.players = jugadores;
         this.dobble = new Dobble(numElementos, cantCartas, elementos);
         this.mode = modo;
         this.turnoPlayer = 1;
         this.CardsMesa = new ArrayList<>();
     }
-
+    
+    //          GETTERS          //
     public List<Player> getPlayers() {
         return players;
     }
@@ -110,6 +109,20 @@ public class DobbleGame {
         return mode;
     }
 
+    public int getTurnoPlayer() {
+        return turnoPlayer;
+    }
+
+    public int getCantPlayers() {
+        return cantPlayers;
+    }
+
+
+    public List<Card> getCardsMesa() {
+        return CardsMesa;
+    }
+    
+    //          SETTERS         //
     public void setPlayers(List<Player> players) {
         this.players = players;
     }
@@ -122,6 +135,58 @@ public class DobbleGame {
         this.mode = mode;
     }
     
+    public void setTurnoPlayer(int turnoPlayer) {
+        this.turnoPlayer = turnoPlayer;
+    }
     
+    public void setCantPlayers(int cantPlayers) {
+        this.cantPlayers = cantPlayers;
+    }
 
+    public void setCardsMesa(List<Card> CardsMesa) {
+        this.CardsMesa = CardsMesa;
+    }
+    
+    //              Metodos Auxiliares              //
+    
+    
+    public boolean playerRegistrado(String name){
+        for(int i = 0; i < players.size();i++){
+            if(name == players.get(i).getNombre()){
+                return true;
+            }
+        }
+        return false;
+    }
+    
+    /**
+     * 
+     * @param namePlayer 
+     */
+    public void register(String namePlayer){
+        int existe = 0;
+        if(players.isEmpty()){
+            Player player = new Player(namePlayer,1);
+            players.add(player);
+        } else{
+            if(players.size()< cantPlayers){
+                for(int i = 0; i < players.size();i++){
+                    if(namePlayer == players.get(i).getNombre()){
+                        existe ++;
+                        System.out.println(namePlayer);
+                        System.out.println(players.get(i).getNombre());
+                    }
+                }
+                if(existe == 1){
+                    System.out.println("ERROR: El usuario ya esta registrado");
+                }else{
+                    Player player = new Player(namePlayer,players.size()+1);
+                    players.add(player);
+                } 
+            } else{
+                System.out.println("ERROR: Ya se encuentra el maximo de jugadores para este juego");
+            }
+                
+        }
+    }
 }
