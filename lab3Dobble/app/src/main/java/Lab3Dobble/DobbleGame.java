@@ -148,17 +148,6 @@ public class DobbleGame {
     }
     
     //              Metodos Auxiliares              //
-    
-    
-    public boolean playerRegistrado(String name){
-        for(int i = 0; i < players.size();i++){
-            if(name == players.get(i).getNombre()){
-                return true;
-            }
-        }
-        return false;
-    }
-    
     /**
      * 
      * @param namePlayer 
@@ -189,4 +178,37 @@ public class DobbleGame {
                 
         }
     }
+    
+    public String whoseTurnIsIt(){
+        return "El turno es del jugador " + turnoPlayer + ": " +
+                players.get(turnoPlayer).getNombre();
+    }
+
+    /**
+     * 
+     * @param i 
+     */
+    public void play(int i){
+        if("stackMode".equals(mode)){
+            //null
+            switch (i) {
+                //SpotIt
+                case 1:
+                    break;
+                //Pass
+                case 2:
+                    break;
+                //Finish
+                case 3:
+                    break;
+                default:
+                    System.out.println("Ingrese una opcion Correcta");
+                    break;
+            }
+        }else if("CPUMode".equals(mode)){
+            System.out.println("esta jugando el CPUMode");
+        }
+    }
+    
+    
 }
