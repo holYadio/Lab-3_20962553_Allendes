@@ -91,7 +91,7 @@ public class DobbleGame {
         this.cantPlayers = cantJugadores;
         this.players = jugadores;
         this.dobble = new Dobble(numElementos, cantCartas, elementos);
-        this.mode = modo;
+        this.mode = modo.toLowerCase();
         this.turnoPlayer = 1;
         this.CardsMesa = new ArrayList<>();
     }
@@ -190,13 +190,42 @@ public class DobbleGame {
      */
     public void play(int i){
         if("stackMode".equals(mode)){
-            //null
+            if(CardsMesa.isEmpty()){
+                int x = dobble.numCards();
+                CardsMesa.add(dobble.nthCard(x-1));
+                CardsMesa.add(dobble.nthCard(x-2));
+                dobble.deleteCard(x);
+                dobble.deleteCard(x-1);
+            }
             switch (i) {
-                //SpotIt
                 case 1:
+                    Scanner entrada = new Scanner(System.in);
+                    String element = entrada.nextLine();
+                    if ((CardsMesa.get(0).existeElemento(element)) &&
+                            (CardsMesa.get(1).existeElemento(element))){
+                        CardsMesa.remove(1);
+                        CardsMesa.remove(0);
+                        int puntos = players.get(turnoPlayer).getPuntos() + 1;
+                        players.get(turnoPlayer).setPuntos(puntos);
+                        System.out.println("El elemento en comun es correcto");
+                    }else{
+                        System.out.println("El elemento no esta en las dos cart"
+                                + "as");
+                    }
+                    if(players.size() == turnoPlayer){
+                        turnoPlayer = 1;
+                    }else{
+                        turnoPlayer += 1;
+                    }
                     break;
                 //Pass
                 case 2:
+                    if(players.size() == turnoPlayer){
+                        turnoPlayer = 1;
+                    }else{
+                        turnoPlayer += 1;
+                    }
+                    System.out.println("Ha pasado el turno");
                     break;
                 //Finish
                 case 3:

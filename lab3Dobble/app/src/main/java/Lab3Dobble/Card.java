@@ -51,14 +51,7 @@ public class Card {
         this.id = id;
     }
     
-    /**
-     * 
-     * @return 
-     */
-    
-    public int size(){
-        return card.size();
-    }
+
     
     /**
      *
@@ -77,6 +70,24 @@ public class Card {
             return false;
         }
         return true;
+    }
+    
+    public boolean existeElemento(String elemento){
+       for(int i = 0; i < card.size();i++){
+           if(card.get(i) == null ? elemento == null : card.get(i).equals(elemento)){
+               return true;
+           }
+       }
+       return false;
+    }
+    
+    /**
+     * 
+     * @return 
+     */
+    
+    public int size(){
+        return card.size();
     }
     
     @Override
