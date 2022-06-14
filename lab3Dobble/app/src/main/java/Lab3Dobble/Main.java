@@ -47,13 +47,23 @@ public class Main {
         elementos2.add("f");
         elementos2.add("d");
 
-        DobbleGame game1 = new DobbleGame(2,3,"stackMode");
+        DobbleGame game1 = new DobbleGame(2,0,"stackMode");
         System.out.println(game1.getPlayers());
         game1.register("Pedro");
-        game1.register("Pedro");
-        game1.register("Juan");
         game1.register("Alicia");
-        System.out.println(game1.getPlayers().get(0).toString());
+        System.out.println(game1.getDobble().toString());
+        System.out.println(game1.getCardsMesa().toString());
+        game1.play(1);
+        System.out.println(game1.getDobble().toString());
+        System.out.println(game1.getCardsMesa().toString());
+        game1.play(2);
+        System.out.println(game1.getDobble().toString());
+        System.out.println(game1.getCardsMesa().toString());
+        game1.play(1);
+        System.out.println(game1.getDobble().toString());
+        System.out.println(game1.getCardsMesa().toString());
+        game1.play(3);
+        
         System.out.println(game1.getPlayers());
         /*
         for(int i = 0; i < numElementos; i++){

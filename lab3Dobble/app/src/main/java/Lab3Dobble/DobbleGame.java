@@ -189,13 +189,19 @@ public class DobbleGame {
      * @param i 
      */
     public void play(int i){
-        if("stackMode".equals(mode)){
+        if("stackmode".equals(mode)){
             if(CardsMesa.isEmpty()){
                 int x = dobble.numCards();
+                System.out.println("Cartas en mesa");
+                System.out.println(dobble.nthCard(x-1));
+                System.out.println(dobble.nthCard(x-2));
                 CardsMesa.add(dobble.nthCard(x-1));
                 CardsMesa.add(dobble.nthCard(x-2));
                 dobble.deleteCard(x);
                 dobble.deleteCard(x-1);
+            }else{
+                System.out.println(CardsMesa.get(0));
+                System.out.println(CardsMesa.get(1));
             }
             switch (i) {
                 case 1:
@@ -203,11 +209,13 @@ public class DobbleGame {
                     String element = entrada.nextLine();
                     if ((CardsMesa.get(0).existeElemento(element)) &&
                             (CardsMesa.get(1).existeElemento(element))){
+                        players.get(turnoPlayer - 1).getMazoPlayer().add(CardsMesa.get(0));
+                        players.get(turnoPlayer - 1).getMazoPlayer().add(CardsMesa.get(1));
                         CardsMesa.remove(1);
                         CardsMesa.remove(0);
-                        int puntos = players.get(turnoPlayer).getPuntos() + 1;
-                        players.get(turnoPlayer).setPuntos(puntos);
-                        System.out.println("El elemento en comun es correcto");
+                        int puntos = players.get(turnoPlayer - 1).getPuntos() + 2;
+                        players.get(turnoPlayer - 1).setPuntos(puntos);
+                        System.out.println("El elemento en comun es correcto\n");
                     }else{
                         System.out.println("El elemento no esta en las dos cart"
                                 + "as");
@@ -227,16 +235,27 @@ public class DobbleGame {
                     }
                     System.out.println("Ha pasado el turno");
                     break;
-                //Finish
+                //Finish  
                 case 3:
+                    Player temp;
+                    for(int k = 1;k < (players.size());k++){
+                        for (int j = 0 ; j < (players.size() - 1); j++){
+                            if(players.get(j).getPuntos() > players.get(j+1).getPuntos()){
+                                temp = players.get(j);
+                                players.set(j, players.get(j+1)) ;
+                                players.set(j + 1, temp);
+                            }
+                        }
+                    }
                     break;
                 default:
                     System.out.println("Ingrese una opcion Correcta");
                     break;
             }
-        }else if("CPUMode".equals(mode)){
+        }else if("cpumode".equals(mode)){
             System.out.println("esta jugando el CPUMode");
-        }
+        }else{
+            System.out.println("Modo de juego invalido");        }
     }
     
     
