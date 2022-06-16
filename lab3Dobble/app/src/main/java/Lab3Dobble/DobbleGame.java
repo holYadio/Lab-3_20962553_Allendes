@@ -91,7 +91,7 @@ public class DobbleGame {
         this.cantPlayers = cantJugadores;
         this.players = jugadores;
         this.dobble = new Dobble(numElementos, cantCartas, elementos);
-        this.mode = modo.toLowerCase();
+        this.mode = modo;
         this.turnoPlayer = 1;
         this.CardsMesa = new ArrayList<>();
     }
@@ -189,7 +189,7 @@ public class DobbleGame {
      * @param i 
      */
     public void play(int i){
-        if("stackmode".equals(mode)){
+        if("stackmode".equals(mode.toLowerCase())){
             if(CardsMesa.isEmpty()){
                 int x = dobble.numCards();
                 System.out.println("Cartas en mesa");
@@ -247,16 +247,41 @@ public class DobbleGame {
                             }
                         }
                     }
+                    if(players.get(players.size()-1).getPuntos()== players.get(players.size()-2).getPuntos()){
+                        int empate =0;
+                        int maximo = players.get(players.size()-1).getPuntos();
+                        for(int j = players.size()-2; j >= 0; j--){
+                            if (players.get(j).getPuntos() == maximo){
+                                empate++;
+                            }
+                        }
+                        if(empate == players.size()-1){
+                            System.out.println("Es un empate entre los jugadores");
+                        }else {
+                            String ganadores = players.get(players.size()-1).getNombre();
+                            while(empate > 0){
+                                int z = players.size()-2;
+                                ganadores += " ," + players.get(z).getNombre();
+                                z--;
+                                empate--;
+                            }
+                            System.out.println("Los ganadores son :" + ganadores
+                                    + ".");
+                        }
+                    }else{
+                        System.out.println("El ganador es " + 
+                                players.get(players.size()-1).getNombre()+".");
+                    }
+                    
                     break;
                 default:
                     System.out.println("Ingrese una opcion Correcta");
                     break;
             }
-        }else if("cpumode".equals(mode)){
-            System.out.println("esta jugando el CPUMode");
+        }else if("demomode".equals(mode.toLowerCase())){
+            System.out.println("esta jugando el DemoMode");
         }else{
-            System.out.println("Modo de juego invalido");        }
+            System.out.println("Modo de juego invalido o no esta implementado");        
+        }        
     }
-    
-    
 }

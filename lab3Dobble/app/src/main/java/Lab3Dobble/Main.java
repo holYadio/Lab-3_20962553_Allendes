@@ -24,47 +24,14 @@ public class Main {
 
     public static void main(String[] args){
         Scanner entrada = new Scanner(System.in);
-        List<String> elementos1= new ArrayList<>();
-        List<String> elementos2= new ArrayList<>();
-        elementos1.add("1");
-        elementos1.add("2");
-        elementos1.add("3");
-        elementos1.add("4");
-        elementos1.add("5");
-        elementos1.add("6");
-        elementos1.add("7");
-        elementos1.add("8");
-        elementos1.add("9");
-        elementos1.add("10");
-        elementos1.add("11");
-        elementos1.add("12");
-        elementos1.add("13");
-        elementos2.add("b");
-        elementos2.add("a");
-        elementos2.add("e");
-        elementos2.add("c");
-        elementos2.add("g");
-        elementos2.add("f");
-        elementos2.add("d");
-
-        DobbleGame game1 = new DobbleGame(2,0,"stackMode");
-        System.out.println(game1.getPlayers());
+        DobbleGame game1 = new DobbleGame(2,0,"demomode");
         game1.register("Pedro");
         game1.register("Alicia");
-        System.out.println(game1.getDobble().toString());
-        System.out.println(game1.getCardsMesa().toString());
         game1.play(1);
-        System.out.println(game1.getDobble().toString());
-        System.out.println(game1.getCardsMesa().toString());
-        game1.play(2);
-        System.out.println(game1.getDobble().toString());
-        System.out.println(game1.getCardsMesa().toString());
         game1.play(1);
-        System.out.println(game1.getDobble().toString());
-        System.out.println(game1.getCardsMesa().toString());
         game1.play(3);
         
-        System.out.println(game1.getPlayers());
+
         /*
         for(int i = 0; i < numElementos; i++){
             System.out.println("El elemento " + (i+1) + "es : " + elementos.get(i));
