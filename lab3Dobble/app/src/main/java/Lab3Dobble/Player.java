@@ -1,7 +1,3 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package Lab3Dobble;
 
 import java.util.ArrayList;
@@ -10,14 +6,20 @@ import java.util.Objects;
 
 /**
  *
- * @author jdall
+ * @author Jhoisan Allendes Fuentes
  */
-public class Player {
+public class Player implements IPlayer {
+    //          ATRIBUTOS         //
     private String nombre;
     private int id;
     private List<Card> mazoPlayer;
     private int puntos;
-
+    
+    /**
+     * Constructor del Jugador
+     * @param nombre Nombre del Jugador
+     * @param id Id del Jugador
+     */
     public Player(String nombre, int id){
         this.nombre = nombre;
         this.id = id;
@@ -26,12 +28,13 @@ public class Player {
     }
 
 
-    // GETTERS //
+    //          GETTERS         //
 
     /**
      * obtiene el nombre del jugador
      * @return nombre del Jugador
      */
+    @Override
     public String getNombre() {
         return nombre;
     }
@@ -40,6 +43,7 @@ public class Player {
      * Obtiene la id del jugador
      * @return id del jugador
      */
+    @Override
     public int getId(){
         return id;
     }
@@ -48,18 +52,35 @@ public class Player {
      * Obtiene el mazo del jugador
      * @return Mazo de cartas del jugador
      */
+    @Override
     public List<Card> getMazoPlayer() {
         return mazoPlayer;
     }
 
+    /**
+     * obtiene la cantidad de puntos del Jugador
+     * @return retorna los puntos del jugador
+     */
+    @Override
     public int getPuntos() {
         return puntos;
     }
     
+    //          SETTERS         //
+    /**
+     * Establece la cantidad de puntos del jugador
+     * @param puntos puntos asociados al jugador
+     */
+    @Override
     public void setPuntos(int puntos) {
         this.puntos = puntos;
     }
-
+    
+    //          METODOS AUXILIARES          //
+    /**
+     * Crea una representacion del jugador como String
+     * @return retorna la representacion como string del jugador
+     */
     @Override
     public String toString() {
         String texto = "Jugador " + id + ": " + nombre + "\n";
@@ -71,6 +92,11 @@ public class Player {
         return texto;
     }
 
+        /**
+     * comprueba si dos jugadores son iguales
+     * @param o Jugador a comparar
+     * @return booleano de si es igual o no dos Jugadores
+     */
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;

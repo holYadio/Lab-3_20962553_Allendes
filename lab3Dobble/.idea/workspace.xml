@@ -7,14 +7,11 @@
     <list default="true" id="773967ef-637f-4836-93c8-ea977969a8db" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/file-system.probe" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/file-system.probe" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/gradle.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/gradle.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/app/build.gradle" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/Lab3Dobble/App.java" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/Lab3Dobble/Card.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/Lab3Dobble/Card.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/Lab3Dobble/Dobble.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/Lab3Dobble/Dobble.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/Lab3Dobble/DobbleGame.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/Lab3Dobble/DobbleGame.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/test/java/Lab3Dobble/AppTest.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/Lab3Dobble/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/Lab3Dobble/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/Lab3Dobble/Menu.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/Lab3Dobble/Menu.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

@@ -1,7 +1,3 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package Lab3Dobble;
 
 import java.util.ArrayList;
@@ -10,18 +6,18 @@ import java.util.Objects;
 
 /**
  *
- * @author jdall
+ * 
  */
-public class Dobble {
+public class Dobble implements IDobble {
+    //          ATRIBUTOS         //
     private List<Card> cardsSet;
     private List<String> listaElementos;
 
     /**
-     * Constructor del Dobble cuando no se entrega un maximo de cartas
-     *
-     * @param numElementos
-     * @param cantCartas
-     * @param elementos
+     * Constructor del set de cartas
+     * @param numElementos numero de elementos por carta
+     * @param cantCartas cantidad de cartas del set
+     * @param elementos elementos para armar el set de cartas
      *
      */
     public Dobble(int numElementos, int cantCartas, List<String> elementos) {
@@ -93,34 +89,31 @@ public class Dobble {
         this.listaElementos = elementos;
     }
     
+    //          GETTERS         //
+    /**
+     * Obtiene el set de cartas
+     * @return retorna el set de cartas
+     */
     public List<Card> getCardsSet() {
         return cardsSet;
     }
 
-    public List<String> getListaElementos() {
-        return listaElementos;
-    }
-
-    public void setCardsSet(List<Card> cardsSet) {
-        this.cardsSet = cardsSet;
-    }
-    public void setListaElementos(List<String> listaElementos) {
-        this.listaElementos = listaElementos;
-    }
-
+    //          METODOS AUXILIARES          //
     /**
      * Obtiene la carta en la posicion n-1 entregada
      * @param n posicion de la carta que se desea encontrar
-     * @return carta en la posicion señalada
+     * @return carta en la posicion seï¿½alada
      */
+    @Override
     public Card nthCard(int n) {
         return cardsSet.get(n);
     }
     
     /**
-     * 
-     * @return 
+     * verifica si es o no un juego dobble valido
+     * @return booleano que comprueba si es o no un set de cartas valido
      */
+    @Override
     public boolean Isdobble(){
         int x = 0;
         for(int i = 0; i < (cardsSet.size() - 1);i++){
@@ -133,9 +126,6 @@ public class Dobble {
         }
         return true;
     }
-        
-
-    
 
     /**
      * Calcula la cantidad de cartas que se pueden crear a partir de una carta
@@ -143,15 +133,17 @@ public class Dobble {
      * @param cartaMuestra carta de muestra
      * @return cantidad de cartas que es posible crear
      */
+    @Override
     public int FindTotalCards(Card cartaMuestra) {
         int i = cartaMuestra.size();
         return (((i - 1) * (i - 1) + (i - 1) + 1));
     }
 
     /**
-     * Cantidad de cartas
+     * calcula la cantidad de cartas
      * @return cantidad de cartas
      */
+    @Override
     public int numCards() {
         return cardsSet.size();
     }
@@ -162,16 +154,18 @@ public class Dobble {
      * @param cartaMuestra carta de muestra
      * @return cantidad de elementos necesarios para generar el conjunto valido
      */
+    @Override
     public int requiredElements(Card cartaMuestra) {
         int i = cartaMuestra.size();
         return (((i - 1) * (i - 1) + (i - 1) + 1));
     }
     
     /**
-     * 
-     * @param carta
-     * @return 
+     * compara si la carta existe dentro del set de cartas a comparar
+     * @param carta carta a comparar
+     * @return booleano que verufuca la existencia de la carta
      */
+    @Override
     public boolean perteneceCard(Card carta){
         for(int j = 0; j < cardsSet.size();j++){
             if(carta.verificarCarta(cardsSet.get(j).getCard())){
@@ -182,9 +176,10 @@ public class Dobble {
     }
     
     /**
-     * 
-     * @return 
+     * Obtiene la lista de cartas que le faltan al mazo para estar completo
+     * @return lista de cartas que le faltan al mazo para estar completo
      */
+    @Override
     public List<Card> missingCards(){
         ArrayList<Card> cardsFaltantes = new ArrayList<>();
         Dobble mazoCompleto = new Dobble(cardsSet.get(0).size(),0,listaElementos);
@@ -201,12 +196,13 @@ public class Dobble {
      * Elimina la n carta
      * @param n Numero de la carta que se desea eliminar
      */
+    @Override
     public void deleteCard(int n){
         cardsSet.remove(n-1);
     }
     
     /**
-     * Crea una representacion de la carta como String
+     * Crea una representacion del set de cartas como String
      * @return retorna la representacion como string del mazo
      */
     @Override
@@ -221,7 +217,7 @@ public class Dobble {
     /**
      * comprueba si dos dobble son iguales
      * @param o
-     * @return 
+     * @return booleano de si es igual o no dos set de cartas
      */
     @Override
     public boolean equals(Object o) {

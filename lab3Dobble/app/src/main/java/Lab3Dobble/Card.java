@@ -1,32 +1,29 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package Lab3Dobble;
 import java.util.List;
-import java.util.Objects;
 /**
  * 
- * @author jdall
+ * @author Jhoisan Allendes Fuentes
  * 
  */
 
 
-public class Card {
+public class Card implements ICard {
+    //          ATRIBUTOS         //
     private List<String> card;
     private int id;
     
     
     /**
      * Constructor de la carta
-     * @param id
-     * @param listElementos 
+     * @param id id de la carta
+     * @param listElementos  elementos de la carta
      */
     public Card(int id, List<String> listElementos){
         this.id = id;
         this.card = listElementos;
     }
-
+    
+    //          GETTERS         //
     /**
      * Metodo para obtener la id de la carta
      * @return Id
@@ -37,27 +34,29 @@ public class Card {
     
     /**
      * Metodo para obtener la lista de elementos que compone la carta
-     * @return 
+     * @return elementos de la carta
      */
     public List<String> getCard() {
         return card;
     }
     
-    public void setCard(List<String> card) {
-        this.card = card;
-    }
-
+    //          SETTERS         //
+    /**
+     * Establece la id de la carta
+     * @param id id de la carta
+     */
     public void setId(int id) {
         this.id = id;
     }
     
 
-    
+    //          METODOS AUXILIARES          //
     /**
-     *
-     * @param cardComp
-     * @return
+     * Comprueba si una lista esta dento de los elementos de la carta
+     * @param cardComp lista a comprobar
+     * @return existe la lista en la carta
      */
+    @Override
     public boolean verificarCarta(List<String> cardComp){
         int x = 0;
         for(int i = 0; i < card.size();i++){
@@ -72,6 +71,12 @@ public class Card {
         return true;
     }
     
+    /**
+     * Comprueba la existencia de algun elemento en la carta
+     * @param elemento
+     * @return booleano que comprueba la existencia del elemento en la carta
+     */
+    @Override
     public boolean existeElemento(String elemento){
        for(int i = 0; i < card.size();i++){
            if(card.get(i) == null ? elemento == null : card.get(i).equals(elemento)){
@@ -82,23 +87,36 @@ public class Card {
     }
     
     /**
-     * 
-     * @return 
+     * calcula la cantidad de elementos de las cartas
+     * @return cantidad de elementos de las cartas
      */
     
+    @Override
     public int size(){
         return card.size();
     }
     
+        /**
+     * comprueba si dos cartas son iguales
+     * @param o carta a comparar
+     * @return booleano de si es igual o no dos cartas
+     */
     @Override
     public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
         Card card1 = (Card) o;
-        return getCard().equals(card1.getCard());
+        for(int i = 0; i < card.size(); i ++){
+            if (card1.existeElemento(card.get(i))){
+                return true;
+            }
+        }
+        if (o == null || getClass() != o.getClass()) return false;
+        return false;
     }
     
-    
+    /**
+     * Crea una representacion de la carta como String
+     * @return retorna la representacion como string de la carta
+     */
     @Override
     public String toString() {
         String texto = "Carta " + id + " : ";
